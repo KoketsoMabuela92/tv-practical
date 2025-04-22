@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "d54c0096-9d39-4934-8a46-280648b8e369",
+		"name": "TV Practical API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21835288"
+	},
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "1.1 Request OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cell_number\": \"+27123456789\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/request-otp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"request-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1.2 Login with OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cell_number\": \"+27123456789\",\n    \"otp\": \"971008\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Device Management",
+			"item": [
+				{
+					"name": "2.1 Create Device Code",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OTIxNzkxOS0wZTFkLTQ3YjQtYWM5MC03MGVjZGU2OTdiMjMiLCJwaG9uZV9udW1iZXIiOiIrMjcxMjM0NTY3ODkiLCJpYXQiOjE3NDUzNTI3MDQsImV4cCI6MTc0NTQzOTEwNH0.Slr9TkJZ8SvQZRGT8AEhbQ931JtGGazawlD8xul2AWY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mac_address\": \"00:11:22:33:44:55\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/device/create-device-code",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"device",
+								"create-device-code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.2 Get Device by Code",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OTIxNzkxOS0wZTFkLTQ3YjQtYWM5MC03MGVjZGU2OTdiMjMiLCJwaG9uZV9udW1iZXIiOiIrMjcxMjM0NTY3ODkiLCJpYXQiOjE3NDUzNTI3MDQsImV4cCI6MTc0NTQzOTEwNH0.Slr9TkJZ8SvQZRGT8AEhbQ931JtGGazawlD8xul2AWY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/device/WJ25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"device",
+								"WJ25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.3 Connect Device",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OTIxNzkxOS0wZTFkLTQ3YjQtYWM5MC03MGVjZGU2OTdiMjMiLCJwaG9uZV9udW1iZXIiOiIrMjcxMjM0NTY3ODkiLCJpYXQiOjE3NDUzNTI3MDQsImV4cCI6MTc0NTQzOTEwNH0.Slr9TkJZ8SvQZRGT8AEhbQ931JtGGazawlD8xul2AWY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"device_id\": \"WJ25\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/device/connect-device",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"device",
+								"connect-device"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.4 Check Connection Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OTIxNzkxOS0wZTFkLTQ3YjQtYWM5MC03MGVjZGU2OTdiMjMiLCJwaG9uZV9udW1iZXIiOiIrMjcxMjM0NTY3ODkiLCJpYXQiOjE3NDUzNTI3MDQsImV4cCI6MTc0NTQzOTEwNH0.Slr9TkJZ8SvQZRGT8AEhbQ931JtGGazawlD8xul2AWY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/device/connection-status/WJ25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"device",
+								"connection-status",
+								"WJ25"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Bundle Management",
+			"item": [
+				{
+					"name": "3.1 Get User Bundles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OTIxNzkxOS0wZTFkLTQ3YjQtYWM5MC03MGVjZGU2OTdiMjMiLCJwaG9uZV9udW1iZXIiOiIrMjcxMjM0NTY3ODkiLCJpYXQiOjE3NDUzNTI3MDQsImV4cCI6MTc0NTQzOTEwNH0.Slr9TkJZ8SvQZRGT8AEhbQ931JtGGazawlD8xul2AWY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/bundles/user-bundle",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bundles",
+								"user-bundle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.2 Create Bundle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OTIxNzkxOS0wZTFkLTQ3YjQtYWM5MC03MGVjZGU2OTdiMjMiLCJwaG9uZV9udW1iZXIiOiIrMjcxMjM0NTY3ODkiLCJpYXQiOjE3NDUzNTI3MDQsImV4cCI6MTc0NTQzOTEwNH0.Slr9TkJZ8SvQZRGT8AEhbQ931JtGGazawlD8xul2AWY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"89217919-0e1d-47b4-ac90-70ecde697b23\",\n  \"name\": \"Sample Data Bundle\",\n  \"data_balance\": 5.0,\n  \"expiry_date\": \"2025-05-22T22:44:34.000Z\",\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/bundles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"bundles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": "your_jwt_token_here"
+		},
+		{
+			"key": "device_code",
+			"value": "your_device_code_here"
+		},
+		{
+			"key": "device_id",
+			"value": "your_device_id_here"
+		}
+	]
+}

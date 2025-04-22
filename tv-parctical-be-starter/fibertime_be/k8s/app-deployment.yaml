@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fibertime-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fibertime-app
+  template:
+    metadata:
+      labels:
+        app: fibertime-app
+    spec:
+      containers:
+      - name: fibertime-app
+        image: fibertime-app:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_HOST
+          value: postgres-service
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: password
+        - name: DB_NAME
+          value: fibertime_db
+        - name: REDIS_HOST
+          value: redis-service
+        - name: REDIS_PORT
+          value: "6379"
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: jwt-secret
+              key: secret
+        - name: JWT_EXPIRES_IN
+          value: "1h"
